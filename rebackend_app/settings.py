@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 
 #Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,22 +28,26 @@ SECRET_KEY = 'django-insecure-1_k-$8u&@45ip1_-vv&ls&@6x-2=v7b54fc6-hyd*r@-oa*i#^
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://localhost:3000', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost:3000', 'localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', 
+    'rest_framework',
+    'rest_framework.authtoken',
     're_app',
     'account',
     'corsheaders',
-    'realtors'
+    'realtors',
+    'contacts',
+    
 ]
 
 
@@ -110,6 +115,14 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'debees24@gmail.com'
+EMAIL_HOST_PASSWORD = 'mxahtlaehcobypge'
+EMAIL_USE_TLS = True
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -164,7 +177,7 @@ CORS_ALLOWED_HOSTS = []
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_HEADERS = ['Content-Type', 'ACCEPT', 'withCrendentials']
+CORS_ALLOW_HEADERS = ['Content-Type', 'ACCEPT', 'withCrendentials', 'Authorization']
 
 # DJOSER = {
 #     'LOGIN_FIELD' : 'email',
@@ -183,12 +196,15 @@ CORS_ALLOW_HEADERS = ['Content-Type', 'ACCEPT', 'withCrendentials']
 #         'user_delete': 'djoser.serializers.UserDeleteSerializer'
 #     },
 # }
-
-
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=24), ## Default is 5 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=2)
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ),
     
     'DEFAULT_AUTHENTICATION_CLASSES' : (
@@ -196,7 +212,7 @@ REST_FRAMEWORK = {
     ),
     
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 4,
+    'PAGE_SIZE': 3,
     
 }
 

@@ -12,13 +12,12 @@ class Images(models.Model):
     
     def __str__(self):
         
-        return self.name
-    
+        return f'Image for "{self.listing.slug}"'
     
 class Listing(models.Model):
     class SaleType(models.TextChoices):
-        FOR_SALE = 'For Sale'
-        FOR_RENT = 'For Rent'
+        BUY = 'Buy'
+        RENT = 'Rent'
         
     class HouseType(models.TextChoices):
         HOUSE = 'House'
@@ -30,7 +29,7 @@ class Listing(models.Model):
         PUBLISHED = 'Published'
         
     realtor = models.ForeignKey(Realtors, on_delete=models.DO_NOTHING)
-    sale_type = models.CharField(max_length=200, choices=SaleType.choices, default=SaleType.FOR_SALE)
+    sale_type = models.CharField(max_length=200, choices=SaleType.choices, default=SaleType.BUY)
     home_type = models.CharField(max_length=200, choices=HouseType.choices, default=HouseType.HOUSE)
     slug = models.CharField(max_length=200, unique=True)
     title = models.CharField(max_length=200)

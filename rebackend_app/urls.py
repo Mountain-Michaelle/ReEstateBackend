@@ -28,7 +28,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_obtain_pair'),
     path('realtors/', include('realtors.urls')),
     path('account/', include('account.urls')),
-    path('re_app/', include('re_app.urls'))
+    path('re_app/', include('re_app.urls')),
+    path('contacts/', include('contacts.urls'))
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

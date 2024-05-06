@@ -6,6 +6,7 @@ from .models import Listing, Images
 class ListingAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'status', 'price', 'list_date', 'realtor')
     list_display_links = ('id', 'title')
+    prepopulated_fields = {'slug': ('title',)}
     list_filter = ('realtor', )
     list_editable = ('status', )
     search_fields = ('title', 'description', 'address', 'city', 'state', 'zip_code', 'price')
