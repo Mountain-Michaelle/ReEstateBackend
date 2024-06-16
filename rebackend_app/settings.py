@@ -123,6 +123,7 @@ EMAIL_HOST_USER = 'debees24@gmail.com'
 EMAIL_HOST_PASSWORD = 'mxahtlaehcobypge'
 EMAIL_USE_TLS = True
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -156,8 +157,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
