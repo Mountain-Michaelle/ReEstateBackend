@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1_k-$8u&@45ip1_-vv&ls&@6x-2=v7b54fc6-hyd*r@-oa*i#^
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'realestate-um5a.onrender.com']
 
 # Application definition
 
