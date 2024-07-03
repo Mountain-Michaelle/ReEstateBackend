@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1_k-$8u&@45ip1_-vv&ls&@6x-2=v7b54fc6-hyd*r@-oa*i#^
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost:3000', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -162,6 +162,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type,
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field,
