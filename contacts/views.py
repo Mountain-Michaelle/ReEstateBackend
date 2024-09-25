@@ -25,8 +25,7 @@ class ContactCreateView(APIView):
             msg_mail,
             'debees24@gmail.com',
             ['debees24@gmail.com'],
-            fail_silently=False
-            
+            fail_silently=False,
         )
         
         contact = Contact(name=name, email=email, subject=subject, message=message)
